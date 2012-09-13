@@ -13,10 +13,10 @@ The help text from the command line is shown below for easy reference.
 
     service.exe [verb] [-option:value] [-switch]
 
-    run                 Runs the service from the command line (default)
-    help, --help        Displays help
+    **run**                 Runs the service from the command line (default)
+    **help**, --help        Displays help
 
-    install             Installs the service
+    **install**             Installs the service
 
       -username         The username to run the service
       -password         The password for the specified username
@@ -39,11 +39,11 @@ The help text from the command line is shown below for easy reference.
       -displayname      The display name the the service should use when
                         installing
 
-    start               Starts the service if it is not already running
+    **start**               Starts the service if it is not already running
       
-    stop                Stops the service if it is running
+    **stop**                Stops the service if it is running
 
-    uninstall           Uninstalls the service
+    **uninstall**           Uninstalls the service
 
       -instance         An instance name if registering the service
                         multiple times
