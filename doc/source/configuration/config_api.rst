@@ -31,7 +31,7 @@ Specify the description of the service in the services control manager. This is 
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.SetDescription("My First Topshelf Service");
     });
@@ -44,7 +44,7 @@ Specify the display name of the service in the services control manager. This is
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.SetDisplayName("MyService");
     });
@@ -57,7 +57,7 @@ Specify the instance name of the service, which is combined with the base servic
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.SetInstanceName("MyService");
     });
@@ -78,7 +78,7 @@ To configure a simple service, the easiest configuration method is available.
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.Service<MyService>();
     });
@@ -91,7 +91,7 @@ If the service does not have a default constructor, the constructor can be speci
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.Service<MyService>(() => ObjectFactory.GetInstance<MyService>());
     });
@@ -107,7 +107,7 @@ If the service needs access to the HostSettings during construction, they are al
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.Service<MyService>(hostSettings => new MyService(hostSettings));
     });
@@ -127,7 +127,7 @@ To configure a completely custom service, such as one that has no dependencies o
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.Service<MyService>(sc =>
         {
@@ -150,7 +150,7 @@ Each of the WhenXxx methods can also take an argument of the ``HostControl`` int
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.Service<MyService>(sc =>
         {
@@ -168,7 +168,7 @@ There are multiple service start modes, each of which can be specified by the co
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.StartAutomatically(); // Start the service automatically
         x.StartAutomaticallyDelayed(); // Automatic (Delayed) -- only available on .NET 4.0 or later
@@ -183,7 +183,7 @@ Services can be configured to run as a number of different identities, using the
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.RunAs("username", "password");
     });
@@ -192,7 +192,7 @@ Runs the service using the specified username and password. This can also be con
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.RunAsPrompt();
     });
@@ -201,7 +201,7 @@ When the service is installed, the installer will prompt for the username/passwo
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.RunAsNetworkService();
     });
@@ -210,7 +210,7 @@ Runs the service using the NETWORK_SERVICE built-in account.
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.RunAsLocalSystem();
     });
@@ -219,7 +219,7 @@ Runs the service using the local system account.
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.RunAsLocalService();
     });
@@ -239,7 +239,7 @@ Topshelf allows actions to be specified that are executed before the service is 
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.BeforeInstall(() => { ... });
     });
@@ -252,7 +252,7 @@ Topshelf allows actions to be specified that are executed after the service is i
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.AfterInstall(() => { ... });
     });
@@ -264,7 +264,7 @@ Topshelf allows actions to be specified that are executed before the service is 
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.BeforeUninstall(() => { ... });
     });
@@ -277,7 +277,7 @@ Topshelf allows actions to be specified that are executed after the service is u
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.AfterUninstall(() => { ... });
     });
@@ -290,7 +290,7 @@ Service dependencies can be specified such that the service does not start until
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.DependsOn("SomeOtherService");
     });
@@ -299,7 +299,7 @@ There are a number of built-in extension methods for well-known services, includ
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.DependsOnMsmq(); // Microsoft Message Queueing
         x.DependsOnMsSql(); // Microsoft SQL Server
@@ -319,7 +319,7 @@ Specifies that the service supports pause and continue, allowing the services co
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.EnablePauseAndContinue();
     });
@@ -332,7 +332,7 @@ Specifies that the service supports the shutdown service command, allowing the s
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.EnableShutdown();
     });
@@ -345,7 +345,7 @@ To configure the service recovery options, a configurator is available to specif
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.EnableServiceRecovery(rc =>
         {
