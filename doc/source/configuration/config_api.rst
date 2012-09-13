@@ -11,7 +11,7 @@ Specify the base name of the service, as it is registered in the services contro
 
 .. sourcecode:: csharp
 
-    HostFactory.New(x =>
+    HostFactory.Run(x =>
     {
         x.SetServiceName("MyService");
     });
